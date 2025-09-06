@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surprise for You 💌</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Mosaic Background */
+.mosaic {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 150px;
+  gap: 3px;
+  z-index: -2;
+}
+
+.mosaic div {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Example images */
+.mosaic div:nth-child(1) { background-image: url("1.jpg"); }
+.mosaic div:nth-child(2) { background-image: url("2.jpg"); }
+.mosaic div:nth-child(3) { background-image: url("3.jpg"); }
+.mosaic div:nth-child(4) { background-image: url("4.jpg"); }
+.mosaic div:nth-child(5) { background-image: url("5.jpg"); }
+.mosaic div:nth-child(6) { background-image: url("6.jpg"); }
+.mosaic div:nth-child(7) { background-image: url("7.jpg"); }
+.mosaic div:nth-child(8) { background-image: url("8.jpg"); }
+.mosaic div:nth-child(9) { background-image: url("9.jpg"); }
+.mosaic div:nth-child(10) { background-image: url("10.jpg"); }
+.mosaic div:nth-child(11) { background-image: url("11.jpg"); }
+.mosaic div:nth-child(12) { background-image: url("12.jpg"); }
+.mosaic div:nth-child(13) { background-image: url("13.jpg"); }
+.mosaic div:nth-child(14) { background-image: url("14.jpg"); }
+.mosaic div:nth-child(15) { background-image: url("15.jpg"); }
+.mosaic div:nth-child(16) { background-image: url("16.jpg"); }
+.mosaic div:nth-child(17) { background-image: url("17.jpg"); }
+.mosaic div:nth-child(18) { background-image: url("18.jpg"); }
+.mosaic div:nth-child(19) { background-image: url("19.jpg"); }
+.mosaic div:nth-child(20) { background-image: url("20.jpg"); }
+
+/* Gradient Overlay */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(144,238,144,0.5), rgba(34,139,34,0.5)); /* green gradient */
+  z-index: -1;
+}
+
+/* Clear Glowing Rectangle */
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: rgba(0,0,0,0); /* transparent */
+  padding: 50px 80px;
+  border-radius: 25px;
+  border: 3px solid rgba(255,255,255,0.5);
+  box-shadow: 0 0 20px rgba(144,238,144,0.6), 0 0 40px rgba(34,139,34,0.4); /* green glow */
+}
+
+/* Title */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: #00ff7f; /* bright green */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+}
+
+/* Countdown Box */
+.counter {
+  font-size: 1.6rem;
+  margin: 15px 0;
+  padding: 15px 25px;
+  border-radius: 15px;
+  display: inline-block;
+  background: rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.counter p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(144,238,144,0.7);
+  margin: 10px 0 0;
+}
+
+/* Floating Daisies */
+.flowers {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.flower {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: -8px 0 green, 8px 0 green, 0 -8px green, 0 8px green; /* petals effect */
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Mosaic Background -->
+<div class="mosaic">
+  <div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
+
+<!-- Gradient Overlay -->
+<div class="overlay"></div>
+
+<!-- Floating Daisies -->
+<div class="flowers"></div>
+
+<!-- Center Clear Rectangle -->
+<div class="container">
+  <h1>💚 Anniversary Countdown 💚</h1>
+  <div class="counter">
+    We’ve been together for:  
+    <p id="daysTogether">Loading...</p>
+  </div>
+  
+</div>
+
+<script>
+// Correct countdown to next anniversary
+const today = new Date();
+let nextAnniversary = new Date(today.getFullYear(), 10, 7); // November is month 10 (0-based)
+
+if (today > nextAnniversary) {
+  // If already passed this year's anniversary, use next year
+  nextAnniversary = new Date(today.getFullYear() + 1, 10, 7);
+}
+
+const diffTime = nextAnniversary - today;
+const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+document.getElementById("daysTogether").innerText = diffDays + " days 🌼";
+
+// Create multiple daisies
+const flowersContainer = document.querySelector('.flowers');
+for (let i = 0; i < 30; i++) {
+  const flower = document.createElement('div');
+  flower.classList.add('flower');
+  flower.style.left = Math.random() * 100 + 'vw';
+  flower.style.animationDuration = 4 + Math.random() * 3 + 's';
+  flower.style.width = 10 + Math.random() * 20 + 'px';
+  flower.style.height = flower.style.width;
+  flowersContainer.appendChild(flower);
+}
+</script>
+
+</body>
+</html>

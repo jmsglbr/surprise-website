@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Home 🌼</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@350;650&display=swap" rel="stylesheet">
+<style>
+/* 🌈 Animated Pastel Gradient */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(120deg, #fdfcfb, #e2f7e1, #fff5f7);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  text-align: center;
+  overflow-x: hidden;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1 {
+  color: #2e7d32;
+  margin-top: 30px;
+  font-size: 1.8rem;
+}
+
+/* 🌼 Floral Card Style */
+p {
+  color: #388e3c;
+  max-width: 700px;
+  margin: 15px auto;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  font-family: 'Merriweather', serif;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Floating Daisies */
+.gallery-container {
+  position: relative;
+  margin: 30px auto;
+  max-width: 650px;
+  padding: 20px 0;
+}
+.floating {
+  position: absolute;
+  cursor: pointer;
+  z-index: 2;
+  animation: float 6s infinite ease-in-out;
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+
+/* ✨ Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.gallery img,
+.gallery video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #c8e6c9;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+}
+.gallery img:hover,
+.gallery video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(56, 142, 60, 0.4);
+  border-color: #81c784;
+}
+
+/* 💌 Love Notes */
+.messages {
+  margin: 25px auto;
+  position: relative;
+  z-index: 2;
+}
+#note {
+  margin-top: 12px;
+  font-size: 1.1em;
+  color: #1b5e20;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* ❤️ Pulsing Button */
+button {
+  padding: 8px 18px;
+  background: #66bb6a;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 8px;
+  animation: pulse 2s infinite;
+}
+button:hover {
+  background: #2e7d32;
+  transform: scale(1.05);
+}
+button:active {
+  transform: scale(0.95);
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Daisy Animation */
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-30px); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Falling Petals */
+.petal {
+  position: fixed;
+  top: -50px;
+  font-size: 1.2rem;
+  animation: fall linear forwards;
+  opacity: 0.9;
+  z-index: 1;
+  pointer-events: none;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
+}
+
+/* Floating Hearts */
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-80px); opacity: 0; }
+}
+
+/* Fade-in for scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 { font-size: 1.5rem; }
+  p { font-size: 0.85rem; max-width: 90%; }
+  .gallery img, .gallery video { height: 180px; }
+  .floating { font-size: 1.2rem; }
+  button { padding: 7px 15px; font-size: 0.95em; }
+}
+
+.extra-button button {
+  background: #66bb6a;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+.extra-button button:hover {
+  background: #2e7d32;
+}
+
+</style>
+</head>
+<body>
+
+<h1 id="typed"></h1>
+<p>
+  Grabe, ang bilis ng panahon parang kaylan lng hehe.. Every day with you is so special, and I feel super lucky na ikaw ang kasama ko sa journey na ‘to. 
+  Salamat sa love, support, at sa lahat ng tawanan at saya natin together. Can’t wait for more memories with you. I Love you so much, Akii! 🌸💛
+</p>
+
+
+<div class="gallery-container">
+  <!-- Floating Daisies -->
+  <span class="floating" style="top:-15px; left:5%;">🌼</span>
+  <span class="floating" style="top:-10px; right:5%;">🌼</span>
+  <span class="floating" style="bottom:-15px; left:15%;">🌼</span>
+  <span class="floating" style="bottom:-10px; right:15%;">🌼</span>
+  <span class="floating" style="top:30%; left:-15px;">🌼</span>
+  <span class="floating" style="top:50%; right:-15px;">🌼</span>
+  <span class="floating" style="top:70%; left:50%;">🌼</span>
+  <span class="floating" style="top:10%; left:70%;">🌼</span>
+
+  <!-- Gallery -->
+  <div class="gallery fade-in">
+    <img src="1.jpg" alt="Memory 1">
+    <video controls autoplay muted loop>
+      <source src="akii.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <img src="2.jpg" alt="Memory 3">
+  </div>
+</div>
+
+<div class="messages fade-in">
+  <button onclick="showNote()">💌 Just for You</button>
+  <button onclick="window.location.href='surprise.html'">💚 Ready, Set, Anniversary!</button>
+  <p id="note"></p>
+</div>
+
+<script>
+// Typewriter Effect
+const message = "🌼 Happy 10th Monthsary, My Love Akii 🌼";
+let i = 0;
+function typeWriter() {
+  if (i < message.length) {
+    document.getElementById("typed").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 100);
+  }
+}
+window.onload = typeWriter;
+
+// Daisy Click Interaction
+document.querySelectorAll('.floating').forEach(flower => {
+  flower.addEventListener('click', () => {
+    flower.style.transform = "scale(1.4)";
+    setTimeout(() => flower.style.transform = "scale(1)", 300);
+  });
+});
+
+// Love Notes
+const notes = [
+  "You’re the sunshine to my daisy 🌼💚",
+  "Forever grateful for you 💖",
+  "My favorite place is next to you 💕",
+  "You make my heart bloom like daisies 🌼",
+  "No distance can break what we have 💌"
+];
+function showNote() {
+  const note = notes[Math.floor(Math.random() * notes.length)];
+  const noteEl = document.getElementById("note");
+  noteEl.style.opacity = 0;
+  noteEl.innerText = note;
+  setTimeout(() => {
+    noteEl.style.opacity = 1;
+  }, 200);
+}
+
+// Falling Daisy Petals
+function createPetal() {
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.textContent = "🌼";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = (3 + Math.random() * 2) + "s";
+  petal.style.fontSize = (0.8 + Math.random() * 1.2) + "rem";
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 6000);
+}
+setInterval(createPetal, 700);
+
+// Floating Hearts on Click
+document.addEventListener("click", function(e) {
+  const heart = document.createElement("span");
+  heart.textContent = "💚";
+  heart.style.position = "absolute";
+  heart.style.left = e.pageX + "px";
+  heart.style.top = e.pageY + "px";
+  heart.style.fontSize = "1.2rem";
+  heart.style.animation = "floatUp 2s ease-out";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 2000);
+});
+
+// Floating Daisy Trail
+document.addEventListener('mousemove', e => {
+  document.querySelectorAll('.floating').forEach(flower => {
+    flower.style.transform = `translate(${(e.clientX/150)}px, ${(e.clientY/150)}px)`;
+  });
+});
+
+// Scroll Fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Gallery Lightbox
+document.querySelectorAll('.gallery img, .gallery video').forEach(item => {
+  item.addEventListener('click', () => {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed; top:0; left:0; width:100vw; height:100vh;
+      background: rgba(0,0,0,0.8); display:flex; justify-content:center;
+      align-items:center; z-index: 9999;
+    `;
+    const clone = item.cloneNode(true);
+    clone.style.maxWidth = "90%";
+    clone.style.maxHeight = "90%";
+    overlay.appendChild(clone);
+    overlay.addEventListener('click', () => overlay.remove());
+    document.body.appendChild(overlay);
+  });
+});
+</script>
+</body>
+</html>
