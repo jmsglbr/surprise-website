@@ -149,30 +149,41 @@ h1 {
 <!-- Floating Daisies -->
 <div class="flowers"></div>
 
-<!-- Center Clear Rectangle -->
 <div class="container">
   <h1>💚 Anniversary Countdown 💚</h1>
+  
+  <!-- Countdown to next anniversary -->
   <div class="counter">
-    We’ve been together for:  
+    Days until next anniversary:  
+    <p id="daysUntilAnniversary">Loading...</p>
+  </div>
+
+  <!-- Days together -->
+  <div class="counter">
+    Days we’ve been together:  
     <p id="daysTogether">Loading...</p>
   </div>
-  
 </div>
 
 <script>
-// Correct countdown to next anniversary
+const startDate = new Date("2024-11-07"); // relationship start date
 const today = new Date();
-let nextAnniversary = new Date(today.getFullYear(), 10, 7); // November is month 10 (0-based)
+
+// Days together so far
+const diffTogether = today - startDate;
+const daysTogether = Math.floor(diffTogether / (1000 * 60 * 60 * 24));
+document.getElementById("daysTogether").innerText = daysTogether + " days 🌼";
+
+// Countdown to next anniversary
+let nextAnniversary = new Date(today.getFullYear(), 10, 7); // November 7
 
 if (today > nextAnniversary) {
-  // If already passed this year's anniversary, use next year
   nextAnniversary = new Date(today.getFullYear() + 1, 10, 7);
 }
 
 const diffTime = nextAnniversary - today;
 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-document.getElementById("daysTogether").innerText = diffDays + " days 🌼";
+document.getElementById("daysUntilAnniversary").innerText = diffDays + " days 🌼";
 
 // Create multiple daisies
 const flowersContainer = document.querySelector('.flowers');
@@ -189,3 +200,4 @@ for (let i = 0; i < 30; i++) {
 
 </body>
 </html>
+
